@@ -1,0 +1,128 @@
+/* 登录页专属样式 - 修复布局+现代化美化 */
+.login-page {
+  width: 100%;
+  height: 100%;
+  /* 柔和蓝紫渐变背景，比纯蓝更高级 */
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* 禁止滚动 */
+}
+
+/* 登录卡片 - 完美居中+阴影+圆角 */
+.login-card {
+  width: 420px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 48px 40px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* 标题 */
+.login-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 40px;
+}
+
+/* 输入框组 */
+.login-item {
+  margin-bottom: 24px;
+  position: relative;
+}
+
+/* 输入框图标（提升美观度） */
+.login-item::before {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #999;
+  z-index: 1;
+}
+
+/* 手机号输入框图标 */
+.login-item.phone::before {
+  content: '📱';
+}
+
+/* 密码输入框图标 */
+.login-item.pwd::before {
+  content: '🔒';
+}
+
+/* 输入框样式 */
+.login-input {
+  width: 100%;
+  height: 52px;
+  padding: 0 16px 0 48px; /* 给图标留位置 */
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  background: #f9fafb;
+}
+
+/* 输入框聚焦高亮效果 */
+.login-input:focus {
+  outline: none;
+  border-color: #667eea;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* 登录按钮 */
+.login-btn {
+  width: 100%;
+  height: 52px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 8px;
+}
+
+/* 按钮悬停动效 */
+.login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+/* 按钮加载状态（防止重复点击） */
+.login-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* 入场动画 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 响应式适配（手机/平板） */
+@media (max-width: 480px) {
+  .login-card {
+    width: 90%;
+    padding: 32px 24px;
+  }
+  .login-title {
+    font-size: 24px;
+  }
+}

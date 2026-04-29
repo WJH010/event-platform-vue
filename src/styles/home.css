@@ -1,0 +1,264 @@
+/* ============ Dashboard 仪表盘样式 ============ */
+.dashboard-page {
+  padding: 8px 8px 0;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* ---- 欢迎横幅 ---- */
+.welcome-banner {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border-radius: 16px;
+  padding: 28px 32px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.welcome-left h1 {
+  font-size: 22px;
+  margin: 0 0 6px 0;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.welcome-left p {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+.role-tag {
+  display: inline-block;
+  padding: 2px 10px;
+  background: rgba(255,255,255,0.22);
+  border-radius: 12px;
+  font-size: 12px;
+  vertical-align: middle;
+}
+
+/* 快捷入口 */
+.quick-nav {
+  display: flex;
+  gap: 16px;
+}
+
+.quick-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 18px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(4px);
+  cursor: pointer;
+  transition: all 0.25s;
+  font-size: 12px;
+  color: #fff;
+}
+
+.quick-item:hover {
+  background: rgba(255,255,255,0.28);
+  transform: translateY(-2px);
+}
+
+/* ---- 统计卡片行 ---- */
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 22px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 14px 14px 0 0;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+.stat-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  background: var(--accent-bg);
+  flex-shrink: 0;
+}
+
+.stat-value {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1d1d1f;
+  line-height: 1.2;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: #86868b;
+  margin-top: 2px;
+}
+
+/* ---- 内容双栏 ---- */
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* 板块卡片 */
+.section-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 22px 0;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.title-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.section-title h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1d1d1f;
+}
+
+.section-body {
+  padding: 14px 22px 20px;
+  flex: 1;
+}
+
+.section-empty {
+  text-align: center;
+  color: #c0c4cc;
+  padding: 48px 0;
+  font-size: 14px;
+}
+
+/* 列表项 */
+.list-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.list-item + .list-item {
+  border-top: 1px solid #f5f5f7;
+}
+
+.list-item:hover {
+  background: #f5f5f7;
+}
+
+.item-cover {
+  width: 52px;
+  height: 36px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+  background: #f2f3f5;
+}
+
+.item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.item-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1d1d1f;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 4px;
+}
+
+.item-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: #86868b;
+}
+
+.item-meta .el-icon {
+  margin-right: 2px;
+  vertical-align: middle;
+}
+
+/* ---- 响应式 ---- */
+@media (max-width: 1100px) {
+  .stat-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .welcome-banner {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .stat-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
