@@ -19,10 +19,10 @@ export function useLogin() {
       ElMessage.warning('请输入手机号')
       return
     }
-    if (!/^1[3-9]\d{9}$/.test(loginForm.phone_number)) {
-      ElMessage.warning('手机号格式错误')
-      return
-    }
+    // if (!/^1[3-9]\d{9}$/.test(loginForm.phone_number)) {
+    //   ElMessage.warning('手机号格式错误')
+    //   return
+    // }
     if (!loginForm.password) {
       ElMessage.warning('请输入密码')
       return

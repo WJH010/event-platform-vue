@@ -27,6 +27,13 @@
                   <span v-if="eventDetail.registration_fee > 0">{{ eventDetail.registration_fee }} 元</span>
                   <span v-else>免费</span>
                 </el-descriptions-item>
+                <el-descriptions-item label-class-name="info-label" label="报名人数">
+                  <span>{{ eventDetail.current_registrants || 0 }} 人已报名</span>
+                  <span v-if="eventDetail.max_registrants > 0" style="margin-left: 8px; color: #909399;">
+                    （上限 {{ eventDetail.max_registrants }} 人，剩余 {{ eventDetail.remaining_quota ?? '不限' }} 名额）
+                  </span>
+                  <span v-else style="margin-left: 8px; color: #909399;">（不限人数）</span>
+                </el-descriptions-item>
               </el-descriptions>
             </div>
           </div>
@@ -93,6 +100,16 @@
           >
             {{ actionButton.text }}
           </el-button>
+          <el-button
+            v-if="isRegistered"
+            type="danger"
+            size="large"
+            @click="handleCancelRegistration"
+            :loading="cancelLoading"
+            class="cancel-button"
+          >
+            取消报名
+          </el-button>
         </div>
       </div>
     </div>
@@ -127,6 +144,7 @@ const isEditingUserInfo = ref(false)
 const editableUserInfo = ref({})
 const userInfoFormRef = ref(null)
 const isSavingUserInfo = ref(false)
+const cancelLoading = ref(false)
 
 
 // --- 数据获取 ---
@@ -250,19 +268,19 @@ const handleRegistration = async () => {
 
 const handleCancelRegistration = async () => {
   try {
-    await ElMessageBox.confirm('您确定要取消报名吗？', '提示', {
-      confirmButtonText: '确定', cancelButtonText: '再想想', type: 'warning'
+    await ElMessageBox.confirm('您确定要取消报名吗？取消后如需再次报名需重新提交信息。', '提示', {
+      confirmButtonText: '确定取消', cancelButtonText: '再想想', type: 'warning'
     })
     
-    actionButton.loading = true
+    cancelLoading.value = true
     await cancelRegistration(eventId)
     ElMessage.success('已取消报名')
     await fetchData()
 
   } catch (e) {
-    if (e !== 'cancel') ElMessage.error(e.response?.data?.message || '取消失败')
+    if (e !== 'cancel') ElMessage.error(e.response?.data?.message || '取消报名失败')
   } finally {
-    actionButton.loading = false
+    cancelLoading.value = false
   }
 }
 
@@ -392,10 +410,21 @@ onMounted(fetchData)
 }
 .action-button-container {
   margin-top: 20px;
-  text-align: center;
-}
-.registration-button {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
   width: 100%;
+  padding: 0; /* 移除任何可能的内边距 */
+  box-sizing: border-box;
+}
+.action-button-container :deep(.el-button) {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 100% !important;
+  box-sizing: border-box !important;
+  margin: 0 !important; /* 确保没有外边距 */
+  padding: 0 15px !important; /* 统一内边距 */
 }
 .el-descriptions-item__label.info-label {
   width: 100px;

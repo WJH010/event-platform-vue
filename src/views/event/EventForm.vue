@@ -51,6 +51,11 @@
           <el-input-number v-model="formData.registration_fee" :precision="2" :step="1" :min="0" />
         </el-form-item>
 
+        <el-form-item label="最大报名人数" prop="max_registrants">
+          <el-input-number v-model="formData.max_registrants" :min="0" :step="1" placeholder="0表示不限" />
+          <span style="margin-left: 10px; color: #909399; font-size: 13px;">0 表示不限制报名人数</span>
+        </el-form-item>
+
         <el-form-item label="活动封面URL" prop="cover_image_url">
           <el-upload
             :show-file-list="false"
@@ -153,6 +158,7 @@ const formData = reactive({
   registration_end_time: '',
   event_address: '',
   registration_fee: 0,
+  max_registrants: 0,
   cover_image_url: '',
   image_id_list: [],
   user_info_id_list: []

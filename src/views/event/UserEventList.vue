@@ -50,7 +50,11 @@
                     </div>
                     <div class="meta-item">
                       <el-icon><User /></el-icon>
-                      <span>{{ item.member_count || 0 }} 人已报名</span>
+                      <span>{{ item.current_registrants || 0 }} 人已报名</span>
+                    </div>
+                    <div class="meta-item" v-if="item.max_registrants > 0">
+                      <el-icon><User /></el-icon>
+                      <span>名额 {{ item.current_registrants || 0 }}/{{ item.max_registrants }}（剩余 {{ item.remaining_quota ?? '不限' }}）</span>
                     </div>
                   </div>
                 </div>
@@ -84,7 +88,11 @@
                     </div>
                     <div class="meta-item">
                       <el-icon><User /></el-icon>
-                      <span>{{ item.member_count || 0 }} 人已报名</span>
+                      <span>{{ item.current_registrants || 0 }} 人已报名</span>
+                    </div>
+                    <div class="meta-item" v-if="item.max_registrants > 0">
+                      <el-icon><User /></el-icon>
+                      <span>名额 {{ item.current_registrants || 0 }}/{{ item.max_registrants }}（剩余 {{ item.remaining_quota ?? '不限' }}）</span>
                     </div>
                   </div>
                 </div>
@@ -118,7 +126,11 @@
                     </div>
                     <div class="meta-item">
                       <el-icon><User /></el-icon>
-                      <span>{{ item.member_count || 0 }} 人已报名</span>
+                      <span>{{ item.current_registrants || 0 }} 人已报名</span>
+                    </div>
+                    <div class="meta-item" v-if="item.max_registrants > 0">
+                      <el-icon><User /></el-icon>
+                      <span>名额 {{ item.current_registrants || 0 }}/{{ item.max_registrants }}（剩余 {{ item.remaining_quota ?? '不限' }}）</span>
                     </div>
                   </div>
                 </div>
