@@ -168,7 +168,7 @@ const handleBeforeAvatarUpload = (file) => {
   return isImage && isLt2M
 }
 
-// 自定义上传（对接后端 /file/upload 接口）
+// 自定义上传（对接后端 /files 接口）
 const customUpload = async (params) => {
   try {
     uploadLoading.value = true

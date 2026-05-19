@@ -82,7 +82,7 @@ async function handleRefreshToken(originalRequest) {
 
   try {
     if (!refreshingPromise) {
-      refreshingPromise = axios.post(`${BASE_URL}/user/refreshToken`, {
+      refreshingPromise = axios.post(`${BASE_URL}/users/refresh-token`, {
         refresh_token: userStore.refresh_token
       })
     }

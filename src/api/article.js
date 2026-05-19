@@ -22,7 +22,7 @@ export function getArticleDetail(id) {
 // 创建文章
 export function createArticle(data) {
   return request({
-    url: '/articles/create',
+    url: '/articles',
     method: 'post',
     data
   })
@@ -31,7 +31,7 @@ export function createArticle(data) {
 // 更新文章
 export function updateArticle(id, data) {
   return request({
-    url: `/articles/update/${id}`,
+    url: `/articles/${id}`,
     method: 'put',
     data
   })
@@ -40,7 +40,7 @@ export function updateArticle(id, data) {
 // 删除文章
 export function deleteArticle(id) {
   return request({
-    url: `/articles/delete/${id}`,
+    url: `/articles/${id}`,
     method: 'delete'
   })
 }
@@ -48,7 +48,7 @@ export function deleteArticle(id) {
 // ============== 领域类型接口 ==============
 export function getFieldTypeList() {
   return request({
-    url: '/fieldType',
+    url: '/field-types',
     method: 'get'
   })
 }
@@ -60,7 +60,7 @@ export function uploadArticleImage(file) {
   formData.append('biz_type', 'ARTICLE')
   formData.append('biz_id', 0)
   return request({
-    url: '/file/upload',
+    url: '/files',
     method: 'post',
     data: formData,
     headers: { 'Content-Type': 'multipart/form-data' }

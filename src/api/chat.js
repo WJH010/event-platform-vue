@@ -10,7 +10,7 @@ export function createGroup(data) {
 
 export function getAllGroups(params) {
   return request({
-    url: '/chat/allGroups',
+    url: '/chat/groups/all',
     method: 'get',
     params
   })
@@ -33,7 +33,7 @@ export function addMembersToGroup(groupId, data) {
 
 export function getNotInGroupMembers(groupId, params) {
   return request({
-    url: `/chat/groups/${groupId}/notInMembers`,
+    url: `/chat/groups/${groupId}/not-in-members`,
     method: 'get',
     params
   })

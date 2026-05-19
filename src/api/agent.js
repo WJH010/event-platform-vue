@@ -16,7 +16,7 @@ export function getModelList() {
  * @param {number} llm_config_id - 模型配置ID
  */
 export function setModelPreference(llm_config_id) {
-  return request.post('/agent/llm-configs/user-preference', { llm_config_id })
+  return request.put('/agent/llm-configs/user-preference', { llm_config_id })
 }
 
 // ========== 会话相关 ==========

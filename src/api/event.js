@@ -4,9 +4,9 @@
  * 报名活动
  * @param {object} data - 包含 event_id 和其他所需用户信息字段
  */
-export function registerForEvent(data) {
+export function registerForEvent(eventId, data) {
   return request({
-    url: '/event/registration',
+    url: `/events/${eventId}/registrations`,
     method: 'post',
     data
   })
@@ -18,7 +18,7 @@ export function registerForEvent(data) {
  */
 export function isUserRegistered(eventId) {
   return request({
-    url: `/event/isUserRegistered/${eventId}`,
+    url: `/events/${eventId}/registration`,
     method: 'get'
   })
 }
@@ -29,7 +29,7 @@ export function isUserRegistered(eventId) {
  */
 export function cancelRegistration(eventId) {
   return request({
-    url: `/event/cancelRegistration/${eventId}`,
+    url: `/events/${eventId}/registrations`,
     method: 'delete'
   })
 }
@@ -40,7 +40,7 @@ export function cancelRegistration(eventId) {
  */
 export function getUserRegisteredEvents(params) {
   return request({
-    url: '/event/userRegisteredEvents',
+    url: '/events/registered',
     method: 'get',
     params
   })
@@ -50,7 +50,7 @@ import request from '@/utils/request'
 // 分页查询活动列表
 export function getEventList(params) {
   return request({
-    url: '/event',
+    url: '/events',
     method: 'get',
     params
   })
@@ -59,7 +59,7 @@ export function getEventList(params) {
 // 获取指定活动详情
 export function getEventDetail(id) {
   return request({
-    url: `/event/${id}`,
+    url: `/events/${id}`,
     method: 'get'
   })
 }
@@ -67,7 +67,7 @@ export function getEventDetail(id) {
 // 创建活动
 export function createEvent(data) {
   return request({
-    url: '/event/create',
+    url: '/events',
     method: 'post',
     data
   })
@@ -76,7 +76,7 @@ export function createEvent(data) {
 // 更新活动
 export function updateEvent(id, data) {
   return request({
-    url: `/event/update/${id}`,
+    url: `/events/${id}`,
     method: 'put',
     data
   })
@@ -85,7 +85,7 @@ export function updateEvent(id, data) {
 // 删除活动
 export function deleteEvent(id) {
   return request({
-    url: `/event/delete/${id}`,
+    url: `/events/${id}`,
     method: 'delete'
   })
 }
@@ -93,7 +93,7 @@ export function deleteEvent(id) {
 // 分页查询报名指定活动的用户列表
 export function getRegisteredUsers(eventId, params) {
   return request({
-    url: `/event/regUsers/${eventId}`,
+    url: `/events/${eventId}/registrations/users`,
     method: 'get',
     params
   })
@@ -106,7 +106,7 @@ export function uploadEventImage(file) {
   formData.append('biz_type', 'EVENT')
   formData.append('biz_id', 0) // 创建时 biz_id 可为0或省略
   return request({
-    url: '/file/upload',
+    url: '/files',
     method: 'post',
     data: formData,
     headers: { 'Content-Type': 'multipart/form-data' }
@@ -116,7 +116,7 @@ export function uploadEventImage(file) {
 // 查询用户信息字段列表
 export function getUserInfoFields(params) {
   return request({
-    url: '/event/userInfo',
+    url: '/events/user-info-fields',
     method: 'get',
     params
   })

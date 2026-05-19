@@ -255,7 +255,7 @@ const handleRegistration = async () => {
       return acc
     }, {})
 
-    await registerForEvent({ event_id: parseInt(eventId), ...registrationData })
+    await registerForEvent(eventId, registrationData)
     ElMessage.success('报名成功！')
     await fetchData()
 

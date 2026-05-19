@@ -2,28 +2,28 @@ import request from '../utils/request'
 
 // 1. 登录
 export function userLogin(data) {
-  return request.post('/user/bgLogin', data)
+  return request.post('/users/bg-login', data)
 }
 
 // 2. 刷新Token（内部自动调用）
 export function refreshToken(data) {
-  return request.post('/user/refreshToken', data)
+  return request.post('/users/refresh-token', data)
 }
 
 // 3. 获取当前用户信息
 export function getUserInfo() {
-  return request.get('/user/info')
+  return request.get('/users/me')
 }
 
 // 4. 退出登录
 export function userLogout() {
-  return request.post('/user/logout')
+  return request.post('/users/logout')
 }
 
 // 5. 更新用户信息
 export function updateUserInfo(data) {
   return request({
-    url: '/user/update',
+    url: '/users/me',
     method: 'put',
     data
   })
@@ -32,7 +32,7 @@ export function updateUserInfo(data) {
 // 6. 获取行业列表
 export function getIndustryList() {
   return request({
-    url: '/industry',
+    url: '/industries',
     method: 'get'
   })
 }
@@ -44,7 +44,7 @@ export function uploadFile(file, bizType, bizId) {
   formData.append('biz_type', bizType)
   formData.append('biz_id', bizId)
   return request({
-    url: '/file/upload',
+    url: '/files',
     method: 'post',
     data: formData,
     headers: { 'Content-Type': 'multipart/form-data' }

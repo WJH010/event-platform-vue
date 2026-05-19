@@ -5,7 +5,7 @@ import request from '../utils/request'
 // 分页获取群组列表
 export function getMessageGroupList(params) {
   return request({
-    url: '/message/messageGroups',
+    url: '/messages/groups',
     method: 'get',
     params
   })
@@ -14,7 +14,7 @@ export function getMessageGroupList(params) {
 // 获取群组详情
 export function getGroupDetail(id) {
   return request({
-    url: `/message/groupDetail/${id}`,
+    url: `/messages/groups/${id}`,
     method: 'get'
   })
 }
@@ -22,7 +22,7 @@ export function getGroupDetail(id) {
 // 创建群组
 export function createGroup(data) {
   return request({
-    url: '/message/createGroup',
+    url: '/messages/groups',
     method: 'post',
     data
   })
@@ -31,7 +31,7 @@ export function createGroup(data) {
 // 更新群组
 export function updateGroup(id, data) {
   return request({
-    url: `/message/updateGroup/${id}`,
+    url: `/messages/groups/${id}`,
     method: 'put',
     data
   })
@@ -40,7 +40,7 @@ export function updateGroup(id, data) {
 // 删除群组
 export function deleteGroup(id) {
   return request({
-    url: `/message/deleteGroup/${id}`,
+    url: `/messages/groups/${id}`,
     method: 'delete'
   })
 }
@@ -49,7 +49,7 @@ export function deleteGroup(id) {
 // 获取群内消息列表
 export function getGroupMessages(id, params) {
   return request({
-    url: `/message/allByGroupID/${id}`,
+    url: `/messages/groups/${id}/all`,
     method: 'get',
     params
   })
@@ -58,7 +58,7 @@ export function getGroupMessages(id, params) {
 // 发送消息
 export function sendMessage(id, data) {
   return request({
-    url: `/message/sendMessage/${id}`,
+    url: `/messages/groups/${id}/messages`,
     method: 'post',
     data
   })
@@ -67,7 +67,7 @@ export function sendMessage(id, data) {
 // 撤销消息
 export function revokeMessage(id) {
   return request({
-    url: `/message/revokeMessage/${id}`,
+    url: `/messages/${id}`,
     method: 'delete'
   })
 }
@@ -76,7 +76,7 @@ export function revokeMessage(id) {
 // 获取群内用户列表
 export function getGroupUsers(id, params) {
   return request({
-    url: `/message/groupUsers/${id}`,
+    url: `/messages/groups/${id}/users`,
     method: 'get',
     params
   })
@@ -85,7 +85,7 @@ export function getGroupUsers(id, params) {
 // 获取不在群内的用户列表
 export function getNotInGroupUsers(id, params) {
   return request({
-    url: `/message/notIngroupUsers/${id}`,
+    url: `/messages/groups/${id}/users/not-in`,
     method: 'get',
     params
   })
@@ -94,7 +94,7 @@ export function getNotInGroupUsers(id, params) {
 // 添加用户到群组
 export function addUserToGroup(id, data) {
   return request({
-    url: `/message/addUserToGroup/${id}`,
+    url: `/messages/groups/${id}/members`,
     method: 'post',
     data
   })
@@ -103,7 +103,7 @@ export function addUserToGroup(id, data) {
 // 从群组移除用户
 export function removeUserFromGroup(id, data) {
   return request({
-    url: `/message/removeUserFromGroup/${id}`,
+    url: `/messages/groups/${id}/members`,
     method: 'delete',
     data
   })
@@ -112,7 +112,7 @@ export function removeUserFromGroup(id, data) {
 // 获取全部用户列表
 export function getAllUserList(params) {
   return request({
-    url: '/user/listAll',
+    url: '/users',
     method: 'get',
     params
   })
@@ -121,7 +121,7 @@ export function getAllUserList(params) {
 // 新增：获取消息详情
 export function getMessageDetail(id) {
   return request({
-    url: `/message/${id}`,
+    url: `/messages/${id}`,
     method: 'get'
   })
 }
@@ -130,7 +130,7 @@ export function getMessageDetail(id) {
 // 1.分页查询当前用户消息群组列表
 export function getUserMessageGroups(params) {
   return request({
-    url: '/message/userMessageGroups',
+    url: '/messages/groups',
     method: 'get',
     params
   })
@@ -138,7 +138,7 @@ export function getUserMessageGroups(params) {
 // 2.分页查询组内消息列表
 export function getGroupMessageList(groupId, params) {
   return request({
-    url: `/message/byGroups/${groupId}`,
+    url: `/messages/groups/${groupId}/messages`,
     method: 'get',
     params
   })
@@ -146,7 +146,7 @@ export function getGroupMessageList(groupId, params) {
 // 4.查询是否有未读消息
 export function hasUnreadMessages(type_code = '') {
   return request({
-    url: '/message/hasUnreadMessages',
+    url: '/messages/unread',
     method: 'get',
     params: { type_code }
   })
@@ -154,7 +154,7 @@ export function hasUnreadMessages(type_code = '') {
 // 5.标记当前用户所有消息为已读
 export function markAllAsRead() {
   return request({
-    url: '/message/markAllAsRead',
-    method: 'put'
+    url: '/messages/read',
+    method: 'patch'
   })
 }
